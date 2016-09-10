@@ -34,6 +34,7 @@ $(function() {
         it('urls are defined', function() {
             allFeeds.forEach(function(eachFeed) {
                 expect(eachFeed.url).toBeDefined();
+                expect(eachFeed.url.length).not.toBe(0);
             })
         });
 
@@ -45,6 +46,7 @@ $(function() {
         it('names are defined', function() {
             allFeeds.forEach(function(eachName) {
                 expect(eachName.name).toBeDefined();
+                expect(eachName.name.length).not.toBe(0);
             })
         });
     });
@@ -68,10 +70,10 @@ $(function() {
           * clicked and does it hide when clicked again.
           */
         it('should change visibility when icon is clicked', function() {
-            $('.menu-icon-link').trigger('click');
-            expect($('body').hasClass('menu-hidden')).toBeFalsy();
-            $('.menu-icon-link').trigger('click');
-            expect($('body').hasClass('menu-hidden')).toBeTruthy();
+            $('.menu-icon-link').click();
+            expect($('body').hasClass('menu-hidden')).toBe(false);
+            $('.menu-icon-link').(click();
+            expect($('body').hasClass('menu-hidden')).toBe(true);
         });  
 
     });
