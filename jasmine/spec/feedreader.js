@@ -72,7 +72,7 @@ $(function() {
         it('should change visibility when icon is clicked', function() {
             $('.menu-icon-link').click();
             expect($('body').hasClass('menu-hidden')).toBe(false);
-            $('.menu-icon-link').(click();
+            $('.menu-icon-link').click();
             expect($('body').hasClass('menu-hidden')).toBe(true);
         });  
 
@@ -108,16 +108,18 @@ $(function() {
         var initialContent;
 
         beforeEach(function(done) {
-            loadFeed(1, done);
-            initialContent = $('.feed').html();
-            // console.log(initialContent);
+            loadFeed(1, function() {
+                initialContent = $('.feed').html();
+                done();
+            });
         });
 
         it('changes the content when new feed is loaded', function(done) {
-            var changeContent = $('.feed').html();
-            // console.log(changeContent);
-            expect(changeContent).not.toBe(initialContent);
-            loadFeed(0, done);
+            loadFeed(2, function() {
+                var changeContent = $('.feed').html();
+                expect(changeContent).not.toBe(initialContent);
+                done();
+            });
         });
     });
 
